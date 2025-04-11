@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ATM Simulation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #e0f7fa;
+    }
+
+    header {
+      background: #006064;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .atm-container {
+      max-width: 400px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #006064;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #006064;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .menu {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 10px;
+      background: #e0f2f1;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: bold;
+      color: #004d40;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>ATM Machine Simulation</h1>
+</header>
+
+<div class="atm-container">
+  <h2>Insert Card</h2>
+  <div id="loginForm">
+    <input type="text" id="accountNumber" placeholder="Account Number" required />
+    <input type="password" id="pin" placeholder="PIN" required />
+    <button onclick="login()">Enter</button>
+  </div>
+
+  <div class="menu" id="atmMenu">
+    <h2>ATM Menu</h2>
+    <select id="atmAction">
+      <option value="">Select Transaction</option>
+      <option value="balance">Check Balance</option>
+      <option value="withdraw">Withdraw</option>
+      <option value="deposit">Deposit</option>
+      <option value="exit">Exit</option>
+    </select>
+    <input type="number" id="amount" class="hidden" placeholder="Enter amount" />
+    <button onclick="performTransaction()">Submit</button>
+  </div>
+
+  <div id="output"></div>
+</div>
+
+<script>
+  let balance = 10000; // Simulated account balance
+
+  function login() {
+    const acc = document.getElementById("accountNumber").value;
+    const pin = document.getElementById("pin").value;
+
+    if (acc === "12345678" && pin === "1234") {
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("atmMenu").style.display = "block";
+      document.getElementById("output").innerText = "Login Successful!";
+    } else {
+      document.getElementById("output").innerText = "Invalid credentials!";
+    }
+  }
+
+  document.getElementById("atmAction").addEventListener("change", function () {
+    const action = this.value;
+    const amountInput = document.getElementById("amount");
+    if (action === "withdraw" || action === "deposit") {
+      amountInput.classList.remove("hidden");
+    } else {
+      amountInput.classList.add("hidden");
+    }
+  });
+
+  function performTransaction() {
+    const action = document.getElementById("atmAction").value;
+    const amtInput = document.getElementById("amount");
+    const output = document.getElementById("output");
+
+    let amount = parseFloat(amtInput.value);
+
+    switch (action) {
+      case "balance":
+        output.innerText = `Your current balance is ₹${balance.toFixed(2)}`;
+        break;
+      case "withdraw":
+        if (amount > balance) {
+          output.innerText = "Insufficient balance!";
+        } else {
+          balance -= amount;
+          output.innerText = `Withdrawn ₹${amount}. New balance: ₹${balance.toFixed(2)}`;
+        }
+        amtInput.value = "";
+        break;
+      case "deposit":
+        balance += amount;
+        output.innerText = `Deposited ₹${amount}. New balance: ₹${balance.toFixed(2)}`;
+        amtInput.value = "";
+        break;
+      case "exit":
+        document.getElementById("atmMenu").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("output").innerText = "Session Ended. Please remove your card.";
+        amtInput.value = "";
+        break;
+      default:
+        output.innerText = "Please select a valid transaction.";
+    }
+  }
+</script>
+
+</body>
+</html>

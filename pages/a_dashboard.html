@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e3f2fd, #e1f5fe);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1E2A78;
+      padding: 20px 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      border-bottom: 4px solid #3f51b5;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 42px;
+      width: 42px;
+      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+    }
+
+    .logo span {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      flex: 1;
+    }
+
+    .logout {
+      background-color: #E53935;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: #c62828;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 50px 80px;
+      flex-grow: 1;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 35px 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .card i {
+      font-size: 40px;
+      color: #3f51b5;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      color: #1e1e1e;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #e3f2fd;
+      color: #666;
+      font-size: 14px;
+      border-top: 1px solid #ddd;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/bank.png" alt="Bank Logo">
+        <span>BlueWave Bank</span>
+      </div>
+      <h1>Admin Dashboard</h1>
+      <button class="logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="dashboard">
+    <a href="./../pages/a_branchmanage.html" class="card">
+      <i class="fas fa-building"></i>
+      <h3>Manage Branch</h3>
+      <p>Oversee branch operations</p>
+    </a>
+    <a href="./../pages/a_employeemanage.html" class="card">
+      <i class="fas fa-user-plus"></i>
+      <h3>Add/Remove Employees</h3>
+      <p>Control employee onboarding and access</p>
+    </a>
+    <a href="./../pages/a_accounts.html" class="card">
+      <i class="fas fa-chart-line"></i>
+      <h3>Branch Account Statistics</h3>
+      <p>Track account metrics across branches</p>
+    </a>
+    <a href="./../pages/a_fd.html" class="card">
+      <i class="fas fa-piggy-bank"></i>
+      <h3>Fixed Deposit Report</h3>
+      <p>Analyze all fixed deposit data</p>
+    </a>
+    <a href="./../pages/a_loan.html" class="card">
+      <i class="fas fa-hand-holding-usd"></i>
+      <h3>Loan Report</h3>
+      <p>Monitor loan performance and stats</p>
+    </a>
+    <a href="./../pages/a_transaction.html" class="card">
+      <i class="fas fa-receipt"></i>
+      <h3>Transaction Report</h3>
+      <p>View detailed transaction summaries</p>
+    </a>
+  </div>
+
+  <footer>
+    &copy; 2025 BlueWave Bank. All rights reserved.
+  </footer>
+
+  <script>
+    function logout() {
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

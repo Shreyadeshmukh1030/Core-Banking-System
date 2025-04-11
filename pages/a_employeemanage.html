@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Employees</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e3f2fd, #e1f5fe);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1E2A78;
+      padding: 20px 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      border-bottom: 4px solid #3f51b5;
+      color: white;
+    }
+
+    header .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 42px;
+      width: 42px;
+    }
+
+    .logo span {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 28px;
+      color: #1E2A78;
+    }
+
+    .employee-table {
+      margin: 40px auto;
+      width: 90%;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 15px;
+    }
+
+    th {
+      background-color: #3f51b5;
+      color: white;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #e1f5fe;
+    }
+
+    .actions button {
+      margin-right: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .edit-btn {
+      background-color: #1976d2;
+      color: white;
+    }
+
+    .remove-btn {
+      background-color: #e53935;
+      color: white;
+    }
+
+    .add-btn {
+      margin: 30px auto 0;
+      display: block;
+      padding: 12px 24px;
+      background-color: #4caf50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: auto;
+      background: #e3f2fd;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/bank.png" alt="Bank Logo">
+        <span>BlueWave Bank</span>
+      </div>
+      <h2>Manage Employees</h2>
+    </div>
+  </header>
+
+  <h1>Employee List</h1>
+
+  <div class="employee-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Branch</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EMP001</td>
+          <td>Ashok Mehra</td>
+          <td>Branch Manager</td>
+          <td>Delhi Central</td>
+          <td>Active</td>
+          <td class="actions">
+            <button class="edit-btn">Edit</button>
+            <button class="remove-btn">Remove</button>
+          </td>
+        </tr>
+        <tr>
+          <td>EMP002</td>
+          <td>Neha Kapoor</td>
+          <td>Loan Officer</td>
+          <td>Mumbai South</td>
+          <td>Active</td>
+          <td class="actions">
+            <button class="edit-btn">Edit</button>
+            <button class="remove-btn">Remove</button>
+          </td>
+        </tr>
+        <tr>
+          <td>EMP003</td>
+          <td>Rahul Singh</td>
+          <td>Cashier</td>
+          <td>Kolkata East</td>
+          <td>Inactive</td>
+          <td class="actions">
+            <button class="edit-btn">Edit</button>
+            <button class="remove-btn">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="add-btn" onclick="addEmployee()">Add New Employee</button>
+
+  <footer>
+    &copy; 2025 BlueWave Bank. All rights reserved.
+  </footer>
+
+  <script>
+    function addEmployee() {
+      alert("Redirecting to Add New Employee page...");
+      // You can redirect here, e.g.:
+      // window.location.href = "add-employee.html";
+    }
+  </script>
+
+</body>
+</html>

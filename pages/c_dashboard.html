@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e3f2fd, #e1f5fe);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #1E2A78;
+      padding: 20px 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      border-bottom: 4px solid #3f51b5;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 42px;
+      width: 42px;
+      filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+    }
+
+    .logo span {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      flex: 1;
+    }
+
+    .logout {
+      background-color: #E53935;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: #c62828;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 50px 80px;
+      flex-grow: 1;
+    }
+
+    .card {
+      background: #ffffff;
+      height: 200px;
+      border-radius: 18px;
+      padding: 35px 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .card i {
+      font-size: 40px;
+      color: #3f51b5;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      color: #1e1e1e;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      background: #e3f2fd;
+      color: #666;
+      font-size: 14px;
+      border-top: 1px solid #ddd;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/bank.png" alt="Bank Logo">
+        <span>BlueWave Bank</span>
+      </div>
+      <h1>Customer Dashboard</h1>
+      <button class="logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="dashboard">
+    <div class="card" onclick="location.href='./../pages/c_accounts.html'">
+      <i class="fas fa-university"></i>
+      <h3>View Account</h3>
+      <p>Check balance and transaction history</p>
+    </div>
+    <div class="card" onclick="location.href='./../pages/c_transaction.html'">
+      <i class="fas fa-exchange-alt"></i>
+      <h3>Transfer Funds</h3>
+      <p>Send money to another account</p>
+    </div>
+    <div class="card" onclick="location.href='./../pages/c_loan.html'">
+      <i class="fas fa-hand-holding-usd"></i>
+      <h3>Apply for Loan</h3>
+      <p>Submit a loan request to your bank</p>
+    </div>
+    <div class="card" onclick="location.href='./../pages/c_fd.html'">
+      <i class="fas fa-piggy-bank"></i>
+      <h3>Apply for Fixed Deposit</h3>
+      <p>Start a fixed deposit to grow your savings securely</p>
+    </div>
+    <div class="card" onclick="location.href='./../pages/c_accountsettings.html'">
+      <i class="fas fa-cog"></i>
+      <h3>Account Settings</h3>
+      <p>Manage your profile, password & preferences</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 BlueWave Bank. All rights reserved.
+  </footer>
+
+  <script>
+    function logout() {
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>

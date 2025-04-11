@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Customer Transactions - BlueWave Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e3f2fd;
+      margin: 0;
+    }
+
+    header {
+      background-color: #1E2A78;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      color: #1E2A78;
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 15px;
+    }
+
+    th {
+      background-color: #1E2A78;
+      color: white;
+      font-weight: 600;
+    }
+
+    form {
+      margin-top: 40px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      background-color: #1E2A78;
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2f3f96;
+    }
+
+    .debit {
+      color: #c62828;
+      font-weight: 600;
+    }
+
+    .credit {
+      color: #2e7d32;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Customer Transactions</h1>
+  </header>
+
+  <div class="container">
+    <h2>Transaction History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-04-08</td>
+          <td>Transfer to Neha</td>
+          <td class="debit">-₹2,000</td>
+          <td>Debit</td>
+        </tr>
+        <tr>
+          <td>2025-04-01</td>
+          <td>Salary Credit</td>
+          <td class="credit">+₹50,000</td>
+          <td>Credit</td>
+        </tr>
+      </tbody>
+    </table>
+<br>
+    <h2>New Transfer</h2>
+    <form id="transferForm">
+      <input type="text" placeholder="Recipient Account Number" required>
+      <input type="number" placeholder="Amount (₹)" required>
+      <select required>
+        <option value="">Transfer Type</option>
+        <option value="NEFT">NEFT</option>
+        <option value="IMPS">IMPS</option>
+        <option value="RTGS">RTGS</option>
+      </select>
+      <button type="submit">Send Money</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('transferForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Transaction submitted for processing!");
+    });
+  </script>
+</body>
+</html>
