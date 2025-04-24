@@ -1,165 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ATM Simulation</title>
+  <meta charset="UTF-8">
+  <title>ATM - BlueWave Bank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #e0f7fa;
+      background: #e3f2fd;
     }
 
     header {
-      background: #006064;
+      background-color: #1E2A78;
       color: white;
-      padding: 20px;
-      text-align: center;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      border-bottom: 4px solid #3f51b5;
     }
 
-    .atm-container {
-      max-width: 400px;
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-logo img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .header-logo span {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 700px;
       margin: 40px auto;
-      background: white;
+      background: #ffffff;
       padding: 30px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     }
 
     h2 {
-      text-align: center;
-      color: #006064;
+      color: #1E2A78;
+      margin-bottom: 20px;
     }
 
-    input, select, button {
+    form input {
       width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      font-size: 16px;
-      border-radius: 6px;
+      padding: 12px;
+      margin: 10px 0;
       border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
     }
 
     button {
-      background: #006064;
+      width: 100%;
+      padding: 12px;
+      background-color: #1E2A78;
       color: white;
-      font-weight: bold;
-      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
       border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
     }
 
-    .menu {
-      display: none;
-      margin-top: 20px;
+    button:hover {
+      background-color: #2c3f90;
     }
 
-    .hidden {
-      display: none;
+    .instructions {
+      font-size: 14px;
+      color: #555;
+      margin-top: 25px;
     }
 
-    #output {
-      margin-top: 20px;
-      padding: 10px;
-      background: #e0f2f1;
-      border-radius: 6px;
-      text-align: center;
-      font-weight: bold;
-      color: #004d40;
+    .instructions p {
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="header-logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/4519/4519107.png" alt="ATM Icon" />
+      <span>BlueWave Bank</span>
+    </div>
+    <div>ATM Terminal</div>
+  </header>
 
-<header>
-  <h1>ATM Machine Simulation</h1>
-</header>
+  <div class="container">
+    <h2>Secure Cash Withdrawal</h2>
+    <form id="atmForm">
 
-<div class="atm-container">
-  <h2>Insert Card</h2>
-  <div id="loginForm">
-    <input type="text" id="accountNumber" placeholder="Account Number" required />
-    <input type="password" id="pin" placeholder="PIN" required />
-    <button onclick="login()">Enter</button>
+      <input type="number" placeholder="Enter Withdrawal Amount (₹)" required>
+      <input type="password" placeholder="Enter 6-digit Security PIN" maxlength="6" required>
+      <button type="submit">Confirm Transaction</button>
+    </form>
+
+    <div class="instructions">
+      <h3>Instructions:</h3>
+      <p>1. Generate a secure cash code via your BlueWave Bank Website.</p>
+      <p>2. Use the reference number and security PIN here for ATM withdrawal.</p>
+      <p>3. Ensure the amount matches exactly for a successful transaction.</p>
+    </div>
   </div>
 
-  <div class="menu" id="atmMenu">
-    <h2>ATM Menu</h2>
-    <select id="atmAction">
-      <option value="">Select Transaction</option>
-      <option value="balance">Check Balance</option>
-      <option value="withdraw">Withdraw</option>
-      <option value="deposit">Deposit</option>
-      <option value="exit">Exit</option>
-    </select>
-    <input type="number" id="amount" class="hidden" placeholder="Enter amount" />
-    <button onclick="performTransaction()">Submit</button>
-  </div>
-
-  <div id="output"></div>
-</div>
-
-<script>
-  let balance = 10000; // Simulated account balance
-
-  function login() {
-    const acc = document.getElementById("accountNumber").value;
-    const pin = document.getElementById("pin").value;
-
-    if (acc === "12345678" && pin === "1234") {
-      document.getElementById("loginForm").style.display = "none";
-      document.getElementById("atmMenu").style.display = "block";
-      document.getElementById("output").innerText = "Login Successful!";
-    } else {
-      document.getElementById("output").innerText = "Invalid credentials!";
-    }
-  }
-
-  document.getElementById("atmAction").addEventListener("change", function () {
-    const action = this.value;
-    const amountInput = document.getElementById("amount");
-    if (action === "withdraw" || action === "deposit") {
-      amountInput.classList.remove("hidden");
-    } else {
-      amountInput.classList.add("hidden");
-    }
-  });
-
-  function performTransaction() {
-    const action = document.getElementById("atmAction").value;
-    const amtInput = document.getElementById("amount");
-    const output = document.getElementById("output");
-
-    let amount = parseFloat(amtInput.value);
-
-    switch (action) {
-      case "balance":
-        output.innerText = `Your current balance is ₹${balance.toFixed(2)}`;
-        break;
-      case "withdraw":
-        if (amount > balance) {
-          output.innerText = "Insufficient balance!";
-        } else {
-          balance -= amount;
-          output.innerText = `Withdrawn ₹${amount}. New balance: ₹${balance.toFixed(2)}`;
-        }
-        amtInput.value = "";
-        break;
-      case "deposit":
-        balance += amount;
-        output.innerText = `Deposited ₹${amount}. New balance: ₹${balance.toFixed(2)}`;
-        amtInput.value = "";
-        break;
-      case "exit":
-        document.getElementById("atmMenu").style.display = "none";
-        document.getElementById("loginForm").style.display = "block";
-        document.getElementById("output").innerText = "Session Ended. Please remove your card.";
-        amtInput.value = "";
-        break;
-      default:
-        output.innerText = "Please select a valid transaction.";
-    }
-  }
-</script>
-
+  <script>
+    document.getElementById('atmForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Withdrawal processing... Please wait.");
+    });
+  </script>
 </body>
 </html>

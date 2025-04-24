@@ -129,7 +129,7 @@
 
 <div class="login-box">
   <div class="branding">
-    <img src="https://img.icons8.com/ios-filled/50/3f51b5/bank.png" alt="bank logo">
+    <img src="https://cdn-icons-png.flaticon.com/128/4519/4519107.png" alt="bank logo">
     <h1>BlueWave Bank</h1>
   </div>
 
@@ -156,9 +156,9 @@
 
 <script>
   const users = [
-    { role: "admin", username: "admin01", password: "adminpass" },
-    { role: "employee", username: "emp01", password: "emppass" },
-    { role: "customer", username: "cust01", password: "custpass" }
+    { role: "admin", username: "admin", password: "apass" },
+    { role: "employee", username: "emp", password: "epass" },
+    { role: "customer", username: "cust", password: "cpass" }
   ];
 
   function login() {
@@ -175,11 +175,11 @@
 
       setTimeout(() => {
         if (role === "admin") {
-          window.location.href = "admin_dashboard.html";
+          window.location.href = "./../pages/a_dashboard.html";
         } else if (role === "employee") {
-          window.location.href = "employee_dashboard.html";
+          window.location.href = "./../pages/e_dashboard.html";
         } else if (role === "customer") {
-          window.location.href = "customer_dashboard.html";
+          window.location.href = "./../pages/c_dashboard.html";
         }
       }, 1500);
     } else {
