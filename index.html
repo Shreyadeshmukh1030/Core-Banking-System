@@ -1,166 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Select Role | Core Banking System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>BlueWave Bank - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #d0e7ff, #f5d0e8);
-      height: 100vh;
+      background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #1E2A78;
+      padding: 20px 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .header-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 48px;
+      width: 48px;
+    }
+
+    .logo span {
+      color: #fff;
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 40px;
+      background: url('https://www.transparenttextures.com/patterns/cubes.png');
+      animation: slideUp 1.2s ease-out;
+    }
+
+    .hero-text {
+      flex: 1 1 500px;
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-text h1 {
+      font-size: 42px;
+      color: #1e2a78;
+      margin-bottom: 20px;
+      animation: fadeIn 1.4s ease;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #444;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 1.6s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .button-group {
       display: flex;
       justify-content: center;
-      align-items: center;
-      animation: fadeIn 1s ease-in;
-      position: relative;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeIn 1.8s ease forwards;
+      animation-delay: 0.5s;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.98); }
-      to { opacity: 1; transform: scale(1); }
+    .cta-btn {
+      padding: 14px 26px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      background: linear-gradient(to right, #1E2A78, #3b49b2);
+      color: #ffffff;
+      transition: background 0.4s ease, transform 0.2s ease;
     }
 
-    .container {
-      background: #ffffff;
-      padding: 40px 30px;
-      border-radius: 16px;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
-      width: 380px;
+    .cta-btn:hover {
+      background: linear-gradient(to right, #3b49b2, #1E2A78);
+      transform: scale(1.05);
+    }
+
+    .hero-image {
+      flex: 1 1 400px;
       text-align: center;
-      transition: transform 0.3s ease;
     }
 
-    .container:hover {
-      transform: translateY(-4px);
+    .hero-image img {
+      max-width: 80%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease;
     }
 
-    h2 {
-      color: #2c387e;
-      margin-bottom: 25px;
-      font-size: 26px;
-      font-weight: 600;
-    }
-
-    select {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      background-color: #f0f4f8;
-      margin-bottom: 25px;
-      transition: border 0.3s ease;
-    }
-
-    select:focus {
-      border-color: #3f51b5;
-      outline: none;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      font-size: 16px;
-      background: linear-gradient(135deg, #3f51b5, #5c6bc0);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    button:hover {
-      background: linear-gradient(135deg, #303f9f, #3949ab);
-      transform: scale(1.02);
-    }
-
-    .btn {
-      width: 70px;
-      padding: 10px;
-      font-size: 14px;
-      background: linear-gradient(135deg, #3f51b5, #5c6bc0);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .top-right {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-    }
-
-    .error {
-      color: #d32f2f;
-      margin-top: 15px;
-      font-size: 14px;
-      animation: shake 0.3s ease;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-4px); }
-      75% { transform: translateX(4px); }
+    .hero-image img:hover {
+      transform: scale(1.05);
     }
 
     footer {
-      margin-top: 25px;
-      font-size: 13px;
-      color: #888;
+      text-align: center;
+      padding: 20px 0;
+      background: url('https://www.transparenttextures.com/patterns/cubes.png');
+      color: #666;
+      font-size: 14px;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        padding: 50px 20px;
+      }
+
+      .hero-text h1 {
+        font-size: 32px;
+      }
+
+      .hero-image {
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <a href="./../pages/login.html">
-  <div class="top-right">
-    <button class="btn">Login</button>
-  </div>
-</a>
 
-  <div class="container">
-    <h2>Select Your Role</h2>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/128/4519/4519107.png" alt="Bank Logo" />
+        <span>BlueWave Bank</span>
+      </div>
+    </div>
+  </header>
 
-    <select id="role">
-      <option value="">-- Choose Role --</option>
-      <option value="customer">Customer</option>
-      <option value="employee">Employee</option>
-      <option value="admin">Admin</option>
-    </select>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Step Into the Future of Banking with BlueWave Bank</h1>
+      <p>
+        BlueWave Bank is your trusted partner in modern banking, redefining the way you manage your finances. 
+        Access your accounts 24/7 and process transactions with ease, anytime and anywhere. From transferring funds to applying for loans or monitoring investments, BlueWave Bank gives you the confidence and convenience to take charge of your financial journey.
+      </p>
+      <div class="button-group">
+        <a href="./../pages/c_register.html" class="cta-btn">Register</a>
+        <a href="./../pages/login.html" class="cta-btn">Login</a>
+      </div>
+      
+    </div>
+    <div class="hero-image">
+      <img src="https://cdn.dribbble.com/users/1322388/screenshots/6480681/online-banking1_4x.jpg" alt="Online Banking Illustration" />
+    </div>
+  </section>
 
-    <button onclick="redirectToDashboard()">Go to Dashboard</button>
-    <div id="errorMessage" class="error"></div>
+  <footer>
+    &copy; 2025 BlueWave Bank. All rights reserved.
+  </footer>
 
-    <footer>&copy; 2025 Core Banking System</footer>
-  </div>
-
-  <script>
-    function redirectToDashboard() {
-      const role = document.getElementById('role').value;
-      const errorDiv = document.getElementById('errorMessage');
-
-      if (role === "customer") {
-        window.location.href = "./pages/c_dashboard.html";
-      } else if (role === "employee") {
-        window.location.href = "./pages/e_dashboard.html";
-      } else if (role === "admin") {
-        window.location.href = "./pages/a_dashboard.html";
-      } else {
-        errorDiv.textContent = "Please select a valid role to continue.";
-      }
-    }
-  </script>
 </body>
 </html>

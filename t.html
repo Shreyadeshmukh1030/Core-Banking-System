@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Role | Core Banking System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #d0e7ff, #f5d0e8);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s ease-in;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+      width: 380px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-4px);
+    }
+
+    h2 {
+      color: #2c387e;
+      margin-bottom: 25px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      background-color: #f0f4f8;
+      margin-bottom: 25px;
+      transition: border 0.3s ease;
+    }
+
+    select:focus {
+      border-color: #3f51b5;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #303f9f, #3949ab);
+      transform: scale(1.02);
+    }
+
+    .btn {
+      width: 70px;
+      padding: 10px;
+      font-size: 14px;
+      background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .top-right {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+    }
+
+    .error {
+      color: #d32f2f;
+      margin-top: 15px;
+      font-size: 14px;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <a href="./../pages/login.html">
+  <div class="top-right">
+    <button class="btn">Login</button>
+  </div>
+</a>
+
+  <div class="container">
+    <h2>Select Your Role</h2>
+
+    <select id="role">
+      <option value="">-- Choose Role --</option>
+      <option value="customer">Customer</option>
+      <option value="employee">Employee</option>
+      <option value="admin">Admin</option>
+    </select>
+
+    <button onclick="redirectToDashboard()">Go to Dashboard</button>
+    <div id="errorMessage" class="error"></div>
+
+    <footer>&copy; 2025 Core Banking System</footer>
+  </div>
+
+  <script>
+    function redirectToDashboard() {
+      const role = document.getElementById('role').value;
+      const errorDiv = document.getElementById('errorMessage');
+
+      if (role === "customer") {
+        window.location.href = "./pages/c_dashboard.html";
+      } else if (role === "employee") {
+        window.location.href = "./pages/e_dashboard.html";
+      } else if (role === "admin") {
+        window.location.href = "./pages/a_dashboard.html";
+      } else {
+        errorDiv.textContent = "Please select a valid role to continue.";
+      }
+    }
+  </script>
+</body>
+</html>
